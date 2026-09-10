@@ -113,7 +113,7 @@ If this metadata or the associated classification workflow is used in academic w
 ```bibtex
 @article{onal_parkinsons_speech_classification,
   author  = {Muharrem Onal and others},
-  title   = {From Voices to Diagnosis: Audio Transformer Models for Parkinson’s Disease Detection},
+  title   = {},
   journal = {To be added},
   year    = {To be added}
 }
