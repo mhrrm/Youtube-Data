@@ -1,87 +1,88 @@
-# YouTube Konuşmalarından Parkinson Hastalığının Sınıflandırılması
+# Parkinson's Disease Classification from YouTube Speech
 
-## Genel Bakış
+## Overview
 
-Bu depo, herkese açık YouTube videolarındaki konuşmaların Parkinson hastalığı (PD) ve sağlıklı kontrol (HC) olarak ikili sınıflandırılmasına yönelik bir araştırma veri kümesiyle ilişkili üst verileri sunmaktadır. Çalışmada beş saniyelik konuşma segmentleri kullanılmaktadır. Üst veriler, segment kayıtlarını, bunların sınıf etiketlerini ve ilgili kaynak videoların URL adreslerini tanımlamaktadır.
+This repository provides metadata associated with a research dataset for binary classification of Parkinson's disease (PD) and healthy-control (HC) speech from publicly accessible YouTube videos. The study uses five-second speech segments. The metadata identifies segment records, their class labels, and the corresponding source-video URLs.
 
-**Bu depoda WAV dosyaları, çıkarılmış ses klipleri veya başka herhangi bir ses kaydı dağıtılmamaktadır.** Kaynak video bağlantıları ve mevcut segment üst verileri, araştırmanın şeffaflığını, izlenebilirliğini ve yeniden üretilebilirliğini desteklemek amacıyla paylaşılmaktadır. Ses verilerini yeniden oluşturmak isteyen araştırmacılar, özgün videolara bağımsız olarak hukuka uygun erişim sağlamalı ve belgelenmiş ses çıkarma ve ön işleme prosedürünü izlemelidir.
+**No WAV files, extracted audio clips, or other audio recordings are distributed in this repository.** Source-video links and available segment metadata are shared to support transparency, traceability, and reproducibility of the research. Researchers wishing to reconstruct the audio must independently obtain lawful access to the original videos and follow the documented extraction and preprocessing procedure.
 
-## Veri Kümesine Genel Bakış
+## Dataset Overview
 
-Veri kümesi, segment düzeyinde dengeli olan **2.470 adet beş saniyelik segment kaydı** içermektedir:
+The dataset contains **2,470 five-second segment records**, balanced at the segment level:
 
-| Sınıf | Etiket | Segment sayısı | Nominal segment süresi |
+| Class | Label | Number of segments | Nominal segment duration |
 |---|---|---:|---:|
-| Parkinson hastalığı | PD | 1.235 | 1:42:55 |
-| Sağlıklı kontrol | HC | 1.235 | 1:42:55 |
-| **Toplam** | — | **2.470** | **3:25:50** |
+| Parkinson's disease | PD | 1,235 | 1:42:55 |
+| Healthy control | HC | 1,235 | 1:42:55 |
+| **Total** | — | **2,470** | **3:25:50** |
 
-## Depodaki Dosya ve Üst Veri Yapısı
 
-Mevcut birleştirilmiş üst veri çalışma kitabı şöyledir:
+## Repository File and Metadata Structure
+
+The current combined metadata workbook is:
 
 - `Youtube_URL_Dagitilmis_2470.xlsx`
-  - **`Sayfa1`**: Segment düzeyindeki üst veriler (2.470 satır).
-  - **`Dagitim Kontrolu`**: Her sınıf için 1.235 kayıt oluşturmak üzere yapılan düzenlemeler sonrasında kaynak video URL’lerinin talep edilen ve uygulanan tekrar sayılarını karşılaştıran denetim sayfası. Bu sayfa bir dağılım denetimidir; segment zaman damgalarını veya bağımsız olarak doğrulanmış konuşmacı kimliklerini içermez.
+  - **`Sayfa1`**: the segment-level metadata (2,470 rows).
+  - **`Dagitim Kontrolu`**: an audit of requested versus applied repetitions of the source-video URLs, following adjustments made to produce 1,235 records per class. This sheet is a distribution audit, not segment timestamps or independently verified speaker identities.
 
-### `Sayfa1` İçindeki Sütunlar
+### Columns in `Sayfa1`
 
-| Sütun | Anlamı | Örnek |
+| Column | Meaning | Example |
 |---|---|---|
-| `speaker_id` | Mevcut çalışma kitabındaki kayıt tanımlayıcısı; **gerçek dünyadaki benzersiz bir konuşmacıya ait doğrulanmış kimlik değildir** | `P01`, `H01` |
-| `class` | İkili sınıf ataması | `PD`, `HC` |
-| `youtube_url` | İlişkili kaynak YouTube videosunun bağlantısı | `https://www.youtube.com/watch?v=...` |
+| `speaker_id` | Record identifier in the current workbook; **not a verified unique real-world speaker identifier** | `P01`, `H01` |
+| `class` | Binary class assignment | `PD`, `HC` |
+| `youtube_url` | Link to the associated source YouTube video | `https://www.youtube.com/watch?v=...` |
 
-Her satır bir segment kaydına karşılık gelir. `speaker_id` alanı, kayıt etiketlerinin sırasını (`P01`–`P1235` ve `H01`–`H1235`) izler ve ayrı bir doğrulanmış konuşmacı eşlemesi olmadan, konuşmacıdan bağımsız değerlendirmede katılımcıları gruplandırmak için **kullanılmamalıdır**.
+Each row corresponds to one segment record. The `speaker_id` field follows the sequence of record labels (`P01`–`P1235` and `H01`–`H1235`) and should **not** be used as a participant grouping key for speaker-independent evaluation without a separate verified speaker mapping.
 
-Mevcut çalışma kitabı, **kayıt başına `start` ve `end` zaman damgalarını**, segmentlerin özgün video içindeki kesin zaman konumlarını veya kayıtları bireysel konuşmacılarla ilişkilendiren doğrulanmış bir eşlemeyi **içermemektedir**. Bu nedenle üst veriler, kaynak videoların ve segment kayıtlarının belirlenmesini destekler; ancak **tek başına her beş saniyelik ses aralığının tam olarak yeniden çıkarılmasına olanak sağlamaz**. Verilerin bütünüyle yeniden oluşturulabilmesi için gelecekte yayımlanacak üst verilerde, her segmentin başlangıç ve bitiş zamanı (veya başlangıç zamanı ile süresi), ilgili ses çıkarma parametreleri ve konuşmacı grup kimlikleri belirtilmelidir.
+The current workbook **does not include per-record `start` and `end` timestamps**, exact segment offsets within the original video, or a verified mapping from records to individual speakers. Therefore, the metadata supports identification of source videos and segment records, but **does not by itself permit exact re-extraction of every five-second audio interval**. To enable full reconstruction, a future metadata release should specify a start time and end time (or start time plus duration) for each segment, along with any relevant extraction parameters and speaker-group IDs.
 
-## Etiket Eşlemesi
+## Label Mapping
 
-İkili sınıflandırma için etiketler aşağıdaki gibi kodlanabilir:
+For binary classification, the labels can be encoded as:
 
 ```text
-HC = 0  # Sağlıklı kontrol
-PD = 1  # Parkinson hastalığı
+HC = 0  # Healthy control
+PD = 1  # Parkinson's disease
 ```
 
-Bunlar, veri kümesindeki kayıtlara atanmış araştırma etiketleridir; yalnızca video üst verilerine dayanılarak bağımsız biçimde doğrulanmış klinik tanılar olarak yorumlanmamalıdır.
+These are research labels attached to the dataset records; they should not be interpreted as independently verified clinical diagnoses solely on the basis of video metadata.
 
-## Ses Çıkarma ve Ön İşleme
+## Audio Extraction and Preprocessing
 
-Deneylerin tekrarlanması için öngörülen işlem akışı şöyledir:
+For experimental replication, the intended processing workflow is to:
 
-1. Videonun erişilebilirliğinin devam etmesi ve geçerli izinler koşuluyla, `youtube_url` üzerinden özgün videoya erişin.
-2. Özgün segmentasyon günlüğünü veya bağımsız olarak belgelenmiş başlangıç/bitiş zaman damgalarını kullanarak hedef konuşma aralığını belirleyin (**bunlar mevcut çalışma kitabında bulunmamaktadır**).
-3. Listede art arda gelen kayıtların bir videodaki ardışık zaman aralıklarını temsil ettiğini varsaymadan, belirtilen beş saniyelik segmenti çıkarın.
-4. Deneysel düzenekle uyumluysa sesi mono biçime dönüştürün ve hedef örnekleme hızına (örneğin 16 kHz) yeniden örnekleyin.
-5. Model girdisini beş saniye uzunluğunda tutarak belgelenmiş normalizasyon, kırpma ve doldurma kurallarını uygulayın.
-6. Sınıfı `class` sütunundan atayın ve kaynak bağlantısını koruyun.
+1. Resolve the `youtube_url` to the original video, subject to its continuing availability and applicable permissions.
+2. Identify the target speech interval using the original segmentation log or independently documented start/end timestamps (**not included in the current workbook**).
+3. Extract the specified five-second segment, without assuming that consecutively listed records represent consecutive intervals of a video.
+4. Convert to mono and resample to the target rate (for example, 16 kHz), if this matches the experimental setup.
+5. Apply the documented normalization, cropping, and padding rules, maintaining a five-second model input.
+6. Assign the class from the `class` column and retain its provenance link.
 
-Yukarıdaki örnekleme hızı ve ön işleme seçenekleri, örnek bir tekrarlama iş akışını tanımlamaktadır; kesin değerler, yazılım sürümleri ve segmentasyon kararları deneyle birlikte raporlanmalıdır. URL tekrar denetimi, segmentlerin kesin başlangıç konumlarını çıkarsamak için kullanılmamalıdır.
+Sample rate and preprocessing options listed above describe an illustrative replication workflow; exact values, software versions, and segmentation decisions should be reported with the experiment. The URL repetition audit must not be used to infer exact extraction offsets.
 
-## Değerlendirme ve Veri Sızıntısı
+## Evaluation and Data Leakage
 
-Dağılım **segment düzeyinde** dengelidir; konuşmacı düzeyinde dengeli olması gerekmez. Aynı videodan veya konuşmacıdan elde edilen birden fazla segment istatistiksel olarak birbirine bağımlıdır. Bu nedenle, satır düzeyinde rastgele bir eğitim/test ayrımı aşırı iyimser sonuçlar üretebilir.
+The distribution is balanced **by segment**, not necessarily by speaker. Multiple segments from the same video or speaker are statistically dependent. A random row-level train/test split may therefore produce overly optimistic results.
 
-**Konuşmacıdan bağımsız** değerlendirme için araştırmacılar öncelikle konuşmacı kimliklerini doğrulamalı ve **aynı kişiye ait tüm segmentleri** aynı çapraz doğrulama katında gruplandırmalıdır. Bu grup tanımlayıcılarıyla `StratifiedGroupKFold` veya grupları dikkate alan eşdeğer bir protokol kullanılabilir. Yalnızca kaynak video URL’sine göre gruplandırma, aynı videodan kaynaklanan veri sızıntısını azaltabilir; ancak bir konuşmacı birden fazla videoda yer alıyorsa konuşmacı bağımsızlığını garanti etmez. Bu çalışma kitabındaki satır düzeyindeki `speaker_id` değerlerini konuşmacı grubu tanımlayıcısı olarak **kullanmayın**.
+For **speaker-independent** evaluation, researchers must first establish verified speaker identities and group **all segments from the same person** into the same fold. With those group identifiers, `StratifiedGroupKFold` (or an equivalent group-aware protocol) can be used. Grouping by source-video URL alone may reduce same-video leakage but does not guarantee speaker independence when a speaker appears across multiple videos. Do **not** use the row-level `speaker_id` values in this workbook as speaker-group identifiers.
 
-Her sınıftaki farklı ve doğrulanmış konuşmacı sayısının, video sayısının, her kattaki sınıf ve konuşmacı dağılımlarının, eğitim/test gruplandırma kurallarının ve metriklerin kat ortalamalarından mı yoksa birleştirilmiş kat dışı tahminlerden mi hesaplandığının raporlanması önerilir.
+Recommended reporting includes the number of distinct verified speakers in each class, the number of videos, fold-level class and speaker distributions, training/test grouping rules, and whether metrics come from fold averages or pooled out-of-fold predictions.
 
-## Önerilen Değerlendirme Metrikleri
+## Recommended Evaluation Metrics
 
-Doğruluk, kesinlik, geri çağırma/duyarlılık, özgüllük, F1 skoru, ROC-AUC ve karışıklık matrisleri; değerlendirme protokolü ve uygun durumlarda belirsizlik tahminleriyle birlikte raporlanabilir.
+Accuracy, precision, recall/sensitivity, specificity, F1-score, ROC-AUC, and confusion matrices may be reported, together with the evaluation protocol and uncertainty estimates where appropriate.
 
-## Yeniden Üretilebilirlik ve Erişilebilirlik Beyanı
+## Reproducibility and Availability Statement
 
-**Özgün WAV ses dosyaları ve çıkarılmış beş saniyelik ses segmentleri paylaşılmamaktadır.** Bunun yerine depo, izlenebilirliği ve yeniden üretilebilirliği desteklemek için kaynak YouTube video URL’lerini, segment kaydı tanımlayıcılarını, sınıf atamalarını ve URL dağılım denetimini sunmaktadır. Özgün videolar, ilgili yayıncıların barındırma ve kontrolü altında kalmaktadır. Erişilebilirlik ve içerik değişebilir veya videolar kaldırılabilir.
+**The original WAV audio files and extracted five-second audio segments are not shared.** Instead, the repository provides source YouTube video URLs, segment-record identifiers, class assignments, and a URL-distribution audit to support traceability and reproducibility. Original videos remain hosted and controlled by their respective publishers. Availability and contents may change or videos may be removed.
 
-**Mevcut sınırlılık:** Kayıtlar beş saniyelik segmentleri temsil etse de yayımlanan çalışma kitabında, segmentlerin tam olarak çıkarılması ve konuşmacı düzeyinde veri sızıntısı olmadan deneylerin tekrarlanması için gerekli olan segment başına kaynak video zaman konumları veya doğrulanmış konuşmacı kimlikleri bulunmamaktadır. Tam yeniden üretilebilirlik hedefleniyorsa bunlar ayrı bir segmentasyon ve konuşmacı eşleme dökümünde sunulmalıdır. Özgün bağlantıların sağlanması, bağımsız olarak indirilen bir ses dosyasının özgün analizi tam olarak yeniden üretmesini garanti etmez.
+**Current limitation:** while the records represent five-second segments, the published workbook does not contain the per-segment source-video time offsets or verified speaker identities needed for exact extraction and leakage-free speaker-level replication. These must be supplied in a separate segmentation and speaker-mapping manifest if full reproducibility is intended. Providing the original links does not guarantee that an independently downloaded audio file will reproduce the original analysis exactly.
 
-## Etik, Telif Hakkı ve Hukuki Hususlar
+## Ethical, Copyright, and Legal Considerations
 
-Kaynak videolar ve bu videoların sesleri, ilgili içerik üreticilerinin haklarına, YouTube’un hizmet şartlarına ve yürürlükteki gizlilik ve veri koruma mevzuatına tabidir. Bir URL’nin paylaşılması, görsel-işitsel içeriği indirme, yeniden kullanma veya yeniden dağıtma izni vermez. Araştırmacılar, kendi veri işleme faaliyetleri için uygun izinlere veya hukuki dayanağa sahip olduklarından emin olmakla sorumludur. Burada hiçbir özgün WAV dosyası yeniden dağıtılmamaktadır.
+The source videos and their audio remain subject to their respective creators' rights, YouTube's terms of service, and applicable privacy and data-protection laws. The inclusion of a URL does not grant permission to download, reuse, or redistribute audiovisual content. Researchers are responsible for ensuring they have the appropriate permissions or lawful basis for their own processing. No original WAV files are redistributed here.
 
-## Sorumluluk Reddi
+## Disclaimer
 
-Bu üst veriler yalnızca bilimsel araştırma ve yöntemsel değerlendirme amacıyla sunulmaktadır. Bu kayıtlar kullanılarak eğitilen bir sınıflandırma modeli, klinik tanı cihazı değildir ve uygun dış doğrulama ve uzman gözetimi olmadan klinik tarama, tanı veya tedavi kararları için kullanılmamalıdır.
+This metadata is provided for scientific research and methodological evaluation only. A classification model trained using these records is not a clinical diagnostic device and must not be used for clinical screening, diagnosis, or treatment decisions without appropriate external validation and professional oversight.
