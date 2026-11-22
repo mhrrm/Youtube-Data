@@ -23,9 +23,7 @@ The current combined metadata workbook is:
 
 - `Youtube_URL.xlsx`
   - **`Sayfa1`**: the segment-level metadata (2,470 rows).
-  - **`Dagitim Kontrolu`**: an audit of requested versus applied repetitions of the source-video URLs, following adjustments made to produce 1,235 records per class. This sheet is a distribution audit, not segment timestamps or independently verified speaker identities.
-
-### Columns in `Sayfa1`
+  ### Columns in `Sayfa1`
 
 | Column | Meaning | Example |
 |---|---|---|
