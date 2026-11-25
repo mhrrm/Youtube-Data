@@ -36,7 +36,7 @@ The current combined metadata workbook is:
 
 Each row corresponds to one segment record. The `speaker\_id` field follows the sequence of record labels (`P01`–`P1235` and `H01`–`H1235`) and should **not** be used as a participant grouping key for speaker-independent evaluation without a separate verified speaker mapping.
 
-The current workbook **does not include per-record `start` and `end` timestamps**, exact segment offsets within the original video, or a verified mapping from records to individual speakers. Accordingly, it supports source identification and segment-record traceability, but **does not permit exact re-extraction of every analyzed five-second audio interval** or independent verification of speaker-level grouping.
+The current workbook **does not include per-record `start` and `end` timestamps**, exact segment offsets within the original video, or a verified mapping from records to individual speakers. Accordingly, it supports source identification and segment-record traceability.
 
 ## Label Mapping
 
