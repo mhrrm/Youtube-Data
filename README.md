@@ -30,9 +30,9 @@ The current combined metadata workbook is:
 
 |Column|Meaning|Example|
 |-|-|-|
-|`speaker\_id`|Record identifier in the current workbook; **not a verified unique real-world speaker identifier**|`P01`, `H01`|
+|`speaker_id`|Record identifier in the current workbook; **not a verified unique real-world speaker identifier**|`P01`, `H01`|
 |`class`|Binary class assignment|`PD`, `HC`|
-|`youtube\_url`|Link to the associated source YouTube video|`https://www.youtube.com/watch?v=...`|
+|`youtube_url`|Link to the associated source YouTube video|`https://www.youtube.com/watch?v=...`|
 
 Each row corresponds to one segment record. The `speaker\_id` field follows the sequence of record labels (`P01`–`P1235` and `H01`–`H1235`) and should **not** be used as a participant grouping key for speaker-independent evaluation without a separate verified speaker mapping.
 
@@ -53,7 +53,7 @@ These are research labels based on source information. They should not be interp
 
 An independent reconstruction effort would require the following steps:
 
-1. Resolve the `youtube\_url` to the original video, subject to continuing availability and applicable permissions.
+1. Resolve the `youtube_url` to the original video, subject to continuing availability and applicable permissions.
 2. Identify the target speech interval from an independently available segmentation log or documented start/end timestamps (**not included in the current workbook**).
 3. Extract the specified five-second speech segment. Do **not** assume consecutively listed records are consecutive intervals of a source video.
 4. Convert the audio to mono and resample it to the target rate (e.g., 16 kHz), **only where consistent with the study's documented experimental setup**.
