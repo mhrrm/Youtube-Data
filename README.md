@@ -22,7 +22,7 @@ The durations above are calculated as the number of segment records multiplied b
 
 The current combined metadata workbook is:
 
-* [`Youtube\_URL.xlsx`](./Youtube_URL.xlsx)
+* [`Youtube_URL.xlsx`](./Youtube_URL.xlsx)
 
   * **`Sayfa1`**: segment-level metadata (2,470 rows, as described in this repository).
 
@@ -78,7 +78,7 @@ Accuracy, precision, recall/sensitivity, specificity, F1-score, ROC-AUC, and con
 
 ## Reproducibility and Availability Statement
 
-**The original YouTube videos, WAV audio files, and extracted five-second audio segments are not redistributed in this repository.** The shared [`Youtube\_URL.xlsx`](./Youtube_URL.xlsx) workbook provides source-video URLs, segment-record identifiers, and class assignments. These metadata support data provenance, source identification, transparency, and **partial reproducibility**, rather than exact reconstruction of the original analysis.
+**The original YouTube videos, WAV audio files, and extracted five-second audio segments are not redistributed in this repository.** The shared [`Youtube_URL.xlsx`](./Youtube_URL.xlsx) workbook provides source-video URLs, segment-record identifiers, and class assignments. These metadata support data provenance, source identification, transparency, and **partial reproducibility**, rather than exact reconstruction of the original analysis.
 
 The PD and HC labels were assigned based on available source information and were **not independently clinically verified** in this study.
 
