@@ -68,7 +68,7 @@ The dataset is balanced **by segment**, not necessarily by speaker. Multiple seg
 
 For **speaker-independent** evaluation, researchers must first establish verified real-world speaker identities and place **all segments from each speaker** in the same fold. With such identifiers, `StratifiedGroupKFold` or an equivalent group-aware validation method can be used. Grouping only by source-video URL may reduce same-video leakage but does not guarantee speaker independence when a speaker appears in multiple videos.
 
-**Do not use the row-level `speaker\_id` values in this workbook as speaker-group identifiers.** The repository does not provide the verified mapping necessary to reconstruct a speaker-independent split from this workbook alone.
+**Do not use the row-level `speaker_id` values in this workbook as speaker-group identifiers.** The repository does not provide the verified mapping necessary to reconstruct a speaker-independent split from this workbook alone.
 
 Recommended reporting includes the number of verified distinct speakers in each class, the number of source videos, fold-level class and speaker distributions, the grouping rules used for train/test separation, and whether metrics are fold averages or pooled out-of-fold estimates.
 
