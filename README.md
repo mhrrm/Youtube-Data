@@ -60,7 +60,7 @@ An independent reconstruction effort would require the following steps:
 5. Apply the normalization, cropping, and padding procedures documented for the experiment to obtain a five-second model input.
 6. Retain the original source URL and class assignment in any derived metadata.
 
-The steps above describe the processing requirements, **not a complete independently executable reproduction protocol**. Exact extraction offsets are not provided in this repository. Researchers must consult the associated study for its experimental settings and must not infer segment offsets from repeated URLs or record order.
+The steps above describe the processing requirements, **not a complete independently executable reproduction protocol**. Exact extraction offsets are not provided in this repository. 
 
 ## Evaluation and Data Leakage
 
