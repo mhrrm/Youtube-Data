@@ -24,7 +24,7 @@ The current combined metadata workbook is:
 
 * [`Youtube_URL.xlsx`](./Youtube_URL.xlsx)
 
-  * **`Sayfa1`**: segment-level metadata (2,470 rows, as described in this repository).
+  * **`Data`**: segment-level metadata (2,470 rows, as described in this repository).
 
 ### Columns in `Sayfa1`
 
